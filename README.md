@@ -1,6 +1,8 @@
-# xnft-quickstart
+# xnft-minter
 
-Quickstart repo for building your own xNFT.
+xNFT app to mint NFTs from a Candy Machine
+
+Most code is from: [https://github.com/metaplex-foundation/candy-machine-ui](Candy Machine UI)
 
 ## Developing
 
