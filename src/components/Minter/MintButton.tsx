@@ -73,13 +73,7 @@ export const MintButton = ({
     if (verified && clicked) {
       mint()
     }
-  }, [
-    verified,
-    clicked,
-    connection.connection,
-    onMint,
-    webSocketSubscriptionId,
-  ])
+  }, [verified, clicked, connection, onMint, webSocketSubscriptionId])
 
   const previousGatewayStatus = usePrevious(gatewayStatus)
   useEffect(() => {

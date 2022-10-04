@@ -21,7 +21,6 @@ export function App() {
         margin: "0 auto",
       }}
     >
-      <Text>Minter</Text>
       <Minter />
     </View>
   )

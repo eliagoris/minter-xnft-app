@@ -61,8 +61,9 @@ const Minter = (props: HomeProps) => {
 
   // @ts-ignore
   const connection = window.xnft.solana.connection
+  const publicKey = usePublicKey()
   const wallet = {
-    publicKey: usePublicKey(),
+    publicKey,
     // @ts-ignore
     signAllTransactions: window.xnft.signAllTransactions,
     // @ts-ignore
@@ -71,21 +72,16 @@ const Minter = (props: HomeProps) => {
   }
 
   const anchorWallet = useMemo(() => {
-    if (
-      !wallet ||
-      !wallet.publicKey ||
-      !wallet.signAllTransactions ||
-      !wallet.signTransaction
-    ) {
+    if (publicKey || window.xnft.signTransaction) {
       return
     }
 
     return {
       publicKey: wallet.publicKey,
-      signAllTransactions: wallet.signAllTransactions,
-      signTransaction: wallet.signTransaction,
+      signAllTransactions: window.xnft.signAllTransactions,
+      signTransaction: window.xnft.signTransaction,
     } as anchor.Wallet
-  }, [wallet])
+  }, [window.xnft.signAllTransactions, window.xnft.signTransaction, publicKey])
 
   const refreshCandyMachineState = useCallback(
     async (commitment: Commitment = "confirmed") => {
@@ -289,8 +285,9 @@ const Minter = (props: HomeProps) => {
     [
       anchorWallet,
       props.candyMachineId,
-      // @ts-ignore
+      // // @ts-ignore
       window.xnft?.solana.rpc,
+      connection,
     ]
   )
 
@@ -464,7 +461,7 @@ const Minter = (props: HomeProps) => {
 
   useEffect(() => {
     refreshCandyMachineState()
-  }, [anchorWallet, props.candyMachineId, connection, refreshCandyMachineState])
+  }, [refreshCandyMachineState])
 
   useEffect(() => {
     ;(function loop() {
