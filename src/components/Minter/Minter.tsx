@@ -41,6 +41,15 @@ export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey
 }
 
+// @TODO find a better way to declare xnft window types
+declare global {
+  interface Window {
+    [index: string]: {
+      [index: string]: any
+    }
+  }
+}
+
 const Minter = (props: HomeProps) => {
   const [isUserMinting, setIsUserMinting] = useState(false)
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>()
