@@ -1,8 +1,8 @@
 # xnft-minter
 
-xNFT app to mint NFTs from a Candy Machine
+xNFT app to mint NFTs from a [Candy Machine](https://docs.metaplex.com/developer-tools/sugar/tutorials/my-first-candy-machine)
 
-Most code is from: [https://github.com/metaplex-foundation/candy-machine-ui](Candy Machine UI)
+Most code is from [Candy Machine UI](https://github.com/metaplex-foundation/candy-machine-ui) turned into react-xnft components
 
 ## Developing
 
